@@ -330,7 +330,7 @@ function startCountdown(eventId, eventDate) {
 // =====================
 
 // Replace 'YOUR_API_KEY' with your actual NewsAPI key
-const NEWS_API_KEY = '6092404c1e3a41e681e9592538da5cdc';
+const NEWS_API_KEY = '5ad87c95e15d47b7ac200c964de6640f';
 const NEWS_API_URL = `https://newsapi.org/v2/everything?q=The%20Weeknd&sortBy=publishedAt&language=en&pageSize=30&apiKey=${NEWS_API_KEY}`;
 
 function isDirectlyAboutWeeknd(article) {
