@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Weeknd</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link href="weekndstyle.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="layout" style="display: flex;">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="sidebar-expanded bg-dark text-white">
+            <button id="sidebarToggle" class="btn btn-sm btn-primary my-2 ms-2">☰</button>
+            <br>
+            <div class="sidebar-content">
+                <span id="sidebar-main-text" class="fs-4">SIDEBAR</span>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item"><a href="weekndintro.html" class="nav-link text-white"
+                            aria-current="page">HOME</a></li>
+                    <li><a href="weekndbio.html" class="nav-link text-white">ABOUT THE WEEKND</a></li>
+                    <li><a href="weekndcc.html" class="nav-link text-white">CONCERTS</a></li>
+                    <li><a href="weekndrn.html" class="nav-link text-white">NEWS</a></li>
+                </ul>
+                <hr>
+                <p id="weeknd-socials-text">THE WEEKND SOCIALS</p>
+                <div class="social-links">
+
+                    <div>
+                        <a href="https://www.instagram.com/theweeknd" target="_blank" rel="noopener">
+                            <img src="icons8-instagram-64.png" alt="The Weeknd Instagram page" />
+                        </a>
+
+                        <a href="https://x.com/theweeknd" target="_blank" rel="noopener">
+                            <img src="icons8-x-64.png" alt="The Weeknd X page" />
+                        </a>
+                    </div>
+
+                    <div>
+                        <a href="https://www.tiktok.com/@theweeknd" target="_blank" rel="noopener">
+                            <img src="icons8-tiktok-64.png" alt="The Weeknd TikTok page" />
+                        </a>
+
+                        <a href="https://www.facebook.com/theweeknd/" target="_blank" rel="noopener">
+                            <img src="icons8-facebook-64.png" alt="The Weeknd Facebook page" />
+                        </a>
+                    </div>
+
+                    <div>
+                        <a href="https://open.spotify.com/artist/1Xyo4u8uXC1ZmMpatF05PJ?si=avjlIQ9jSZCZ9rcDxjCr6w"
+                            target="_blank" rel="noopener">
+                            <img src="icons8-spotify-64.png" alt="The Weeknd Spotify page" />
+                        </a>
+
+                        <a href="https://www.youtube.com/@TheWeeknd" target="_blank" rel="noopener">
+                            <img src="icons8-youtube-64.png" alt="The Weeknd YouTube page" />
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <div class="dropdown">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="" alt="Random profile picture" width="32" height="32" class="rounded-circle me-2" id="profile-icon">
+                        <strong id="username-sb"></strong>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                        <li><a class="dropdown-item" href="weeknd.html">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="sidebar-collapsed-text d-none flex-column align-items-center justify-content-center h-100">
+                <span>MENU</span>
+            </div>
+        </nav>
+        
+        <div class="flex-grow-1" id="main-content">
+            <div class="top">
+                <img src="https://elpopularnews.com/wp-content/uploads/2024/09/weeknd.jpg" alt="The Weeknd" id="first">
+                <div class="intro">
+                    <h1 class="main-titles">THE WEEKND</h1>
+                    <p class="text justify-paragraph">The Weeknd is a Canadian singer, songwriter, and record producer. He is known for
+                        his
+                        unique sound and style, which blends elements of R&B, soul, and pop. He has won multiple awards,
+                        including multiple Grammy Awards and a Golden Globe Award.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add buttons for social media, navbar, buyer page for concert tickets -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <script src="weeknd.js"></script>
+</body>
+
+</html>

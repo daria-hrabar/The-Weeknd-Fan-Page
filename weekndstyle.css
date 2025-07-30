@@ -1,0 +1,602 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+#layout {
+    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+html {
+    background: linear-gradient(45deg, rgb(80, 99, 147), rgb(204, 235, 255));
+}
+body {
+    background: transparent;
+}
+
+.blur-bg {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: url('weekndbg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    position: fixed;
+    overflow: hidden;
+}
+
+.blur-bg::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('weekndbg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(2px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.ls-title {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+    font-size: 50px;
+    color: rgb(221, 244, 255);
+    text-shadow: 3px 3px 6px rgba(0, 10, 15, 0.653);
+}
+
+.ls-text {
+    font-family: 'Franklin Gothic', 'ITC Franklin Gothic', Arial, sans-serif;
+    font-weight: lighter;
+    font-size: 15px;
+    color: rgb(221, 244, 255);
+    text-shadow: 3px 3px 3px rgba(0, 10, 15, 0.744);
+}
+
+.top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 50px auto;
+    padding: 2rem 2rem;
+    box-shadow: 0 4px 24px rgba(0, 10, 52, 0.08);
+    align-items: center;
+}
+.top img {
+    height: 400px;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.top-bio {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 25px auto;
+    padding: 2rem 2rem;
+    box-shadow: 0 4px 24px rgba(0, 10, 52, 0.08);
+    align-items: center;
+}
+
+.top-bio img {
+    height: 400px;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.intro {
+    text-align: right;
+    padding: 0 5rem;
+}
+.main-titles {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+    font-size: 50px;
+    text-align: center;
+}
+.text {
+    font-family: 'Franklin Gothic', 'ITC Franklin Gothic', Arial, sans-serif;
+    font-weight: lighter;
+    font-size: 15px;
+}
+.links {
+    background: linear-gradient(225deg, rgb(0, 42, 72), rgb(27, 89, 133));
+    margin: 40px auto;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 24px rgba(0, 10, 52, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16rem;
+}
+.links a {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    color: rgb(221, 244, 255);
+    text-decoration: none;
+}
+
+/* Sidebar expanded/collapsed animation */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    min-width: 60px;
+    max-width: 250px;
+    transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+    z-index: 1000;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.08);
+    background: #212529;
+}
+
+#sidebar.sidebar-collapsed {
+    width: 60px;
+    min-width: 70px;
+}
+
+#sidebar.sidebar-expanded {
+    width: 250px;
+    min-width: 250px;
+}
+
+#sidebar {
+    height: 100%;
+}
+#sidebar.sidebar-collapsed {
+    height: 100%;
+}
+
+#main-content {
+    margin-left: 250px;
+    transition: margin-left 0.4s cubic-bezier(0.4,0,0.2,1);
+    width: calc(100vw - 250px);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+#sidebar.sidebar-collapsed ~ #main-content {
+    margin-left: 60px;
+    width: calc(100vw - 60px);
+}
+
+#sidebarToggle {
+    position: absolute;
+    top: 16px;
+    left: 8px;
+    z-index: 1100;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    background: #2086cf;
+    color: #fff;
+    border: none;
+    padding-left: 8px;
+    padding-right: 18px;
+    transition: left 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+#sidebar.sidebar-collapsed #sidebarToggle {
+    left: 8px;
+    padding-right: 24px;
+}
+#sidebar.sidebar-expanded #sidebarToggle {
+    left: 99px;
+    padding-right: 18px;
+}
+
+#sidebar .sidebar-content {
+    margin-top: 60px; /* push content below toggle button */
+}
+
+/* Sidebar content hides when collapsed */
+#sidebar.sidebar-collapsed .sidebar-content {
+    display: none;
+}
+#sidebar.sidebar-collapsed .sidebar-collapsed-text {
+    display: flex !important;
+}
+#sidebar .sidebar-collapsed-text {
+    display: none;
+}
+
+#sidebarToggle:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #0d6efd44;
+}
+
+.main-titles-bio {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+    font-size: 55px;
+    text-align: center;
+}
+
+.biosubheadings{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+}
+
+.outoftime-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* justify text in bio */
+.swiper-custom-nav {
+    margin-top: 10px;
+}
+.custom-arrow-btn {
+    background: none;
+    border: none;
+    padding: 0 10px;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+.custom-arrow-btn:active {
+    transform: scale(0.95);
+}
+.custom-arrow-btn svg {
+    display: block;
+}
+.weeknd-news-card {
+    width: 340px;
+    min-width: 340px;
+    max-width: 340px;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0 auto;
+}
+
+.weeknd-news-card .card-img-top {
+    height: 180px;
+    object-fit: cover;
+}
+
+.weeknd-news-card .card-body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 300px; /* Fixed height for the body */
+    overflow: hidden;
+}
+
+.weeknd-news-card .card-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.weeknd-news-card .card-text {
+    font-size: 0.95rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Number of lines to show */
+    -webkit-box-orient: vertical;
+    line-clamp: 4; /* Standard property for compatibility */
+    box-orient: vertical;
+}
+
+.card-source {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* Add space between slides */
+.swiper-slide {
+    margin-right: 20px; /* or your preferred spacing */
+}
+
+/* Make all cards stretch to the same height */
+.swiper-wrapper {
+    align-items: stretch;
+}
+
+/* Remove fixed height, use min-height for a baseline */
+.weeknd-news-card {
+    width: 340px;
+    min-width: 340px;
+    max-width: 340px;
+    min-height: 480px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0 auto;
+}
+
+.swiper-pagination {
+    margin-top: 16px;
+    margin-bottom: 0;
+    text-align: center;
+    position: static !important;
+}
+
+.swiper-button-disabled {
+    opacity: 0.3;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.main-titles-bio {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+.social-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+}
+
+#sidebar {
+    font-family: 'Franklin Gothic', 'ITC Franklin Gothic', Arial, sans-serif;
+    font-weight: lighter;
+    font-size: 16px;
+    text-align: center
+}
+
+#sidebar-main-text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center
+}
+
+#weeknd-socials-text {
+    text-align: center
+}
+
+.nav-link.text-white.active {
+    background: #2086cf;
+}
+
+.dropdown {
+    display: flex;
+    justify-content: center; /* horizontal */
+    align-items: center;     /* vertical */
+}
+
+.sidebar-collapsed-text.d-none.flex-column.align-items-center.justify-content-center.h-100 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    margin-left: 20px
+}
+
+.social-links img {
+    height: 53px;
+    width: auto
+}
+
+/* =====================
+   COMMENT SECTION STYLES
+   ===================== */
+
+/* Rating Stars */
+.rating-stars {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 5px;
+}
+
+.rating-input {
+    display: none;
+}
+
+.rating-star {
+    font-size: 2rem;
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.rating-star:hover,
+.rating-star:hover ~ .rating-star,
+.rating-input:checked ~ .rating-star {
+    color: #ffd700;
+}
+
+/* Comment Cards */
+.comment-card {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border: 1px solid #dee2e6;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comment-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #2086cf;
+}
+
+.commenter-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.commenter-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2086cf, #0d6efd);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.commenter-details h5 {
+    margin: 0;
+    color: #333;
+    font-weight: 600;
+}
+
+.commenter-details small {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.comment-rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.comment-rating .stars {
+    color: #ffd700;
+    font-size: 1.1rem;
+}
+
+.comment-content {
+    color: #555;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.comment-venue {
+    background: linear-gradient(135deg, #2086cf, #0d6efd);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.comment-date {
+    color: #888;
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+/* Form Styling */
+#comment-form {
+    background: linear-gradient(135deg, #f8f9fa, #ffffff);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #e9ecef;
+}
+
+#comment-form .form-control {
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#comment-form .form-control:focus {
+    border-color: #2086cf;
+    box-shadow: 0 0 0 0.2rem rgba(32, 134, 207, 0.25);
+}
+
+#comment-form .btn-primary {
+    background: linear-gradient(135deg, #2086cf, #0d6efd);
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#comment-form .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(32, 134, 207, 0.4);
+}
+
+/* Empty State */
+.no-comments {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+}
+
+.no-comments i {
+    font-size: 3rem;
+    color: #ddd;
+    margin-bottom: 15px;
+}
+
+/* Animation for new comments */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.comment-card {
+    animation: slideIn 0.5s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .comment-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .rating-stars {
+        gap: 3px;
+    }
+    
+    .rating-star {
+        font-size: 1.5rem;
+    }
+}
+
+.justify-paragraph {
+    text-align: justify;
+    text-align-last: center;
+}
+
+.justify-paragraph-bio {
+    text-align: justify;
+    text-align-last: center;
+    padding: 1rem
+}
+
+.btn.btn-primary {
+    background: #2086cf;
+}

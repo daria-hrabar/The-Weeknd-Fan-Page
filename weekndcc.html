@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Concerts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link href="weekndstyle.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <body>
+        <div id="layout" style="display: flex;">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="sidebar-expanded bg-dark text-white">
+                <button id="sidebarToggle" class="btn btn-sm btn-primary my-2 ms-2">☰</button>
+                <br>
+                <div class="sidebar-content">
+                    <span id="sidebar-main-text" class="fs-4">SIDEBAR</span>
+                    <hr>
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <li class="nav-item"><a href="weekndintro.html" class="nav-link text-white"
+                                aria-current="page">HOME</a></li>
+                        <li><a href="weekndbio.html" class="nav-link text-white">ABOUT THE WEEKND</a></li>
+                        <li><a href="weekndcc.html" class="nav-link text-white">CONCERTS</a></li>
+                        <li><a href="weekndrn.html" class="nav-link text-white">NEWS</a></li>
+                    </ul>
+                    <hr>
+                    <p id="weeknd-socials-text">THE WEEKND SOCIALS</p>
+                    <div class="social-links">
+
+                        <div>
+                            <a href="https://www.instagram.com/theweeknd" target="_blank" rel="noopener">
+                                <img src="icons8-instagram-64.png" alt="The Weeknd Instagram page" />
+                            </a>
+
+                            <a href="https://x.com/theweeknd" target="_blank" rel="noopener">
+                                <img src="icons8-x-64.png" alt="The Weeknd X page" />
+                            </a>
+                        </div>
+
+                        <div>
+                            <a href="https://www.tiktok.com/@theweeknd" target="_blank" rel="noopener">
+                                <img src="icons8-tiktok-64.png" alt="The Weeknd TikTok page" />
+                            </a>
+
+                            <a href="https://www.facebook.com/theweeknd/" target="_blank" rel="noopener">
+                                <img src="icons8-facebook-64.png" alt="The Weeknd Facebook page" />
+                            </a>
+                        </div>
+
+                        <div>
+                            <a href="https://open.spotify.com/artist/1Xyo4u8uXC1ZmMpatF05PJ?si=avjlIQ9jSZCZ9rcDxjCr6w"
+                                target="_blank" rel="noopener">
+                                <img src="icons8-spotify-64.png" alt="The Weeknd Spotify page" />
+                            </a>
+
+                            <a href="https://www.youtube.com/@TheWeeknd" target="_blank" rel="noopener">
+                                <img src="icons8-youtube-64.png" alt="The Weeknd YouTube page" />
+                            </a>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="dropdown">
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="" alt="Random profile picture" width="32" height="32" class="rounded-circle me-2" id="profile-icon">
+                            <strong id="username-sb"></strong>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                            <li><a class="dropdown-item" href="weeknd.html">Sign out</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sidebar-collapsed-text d-none flex-column align-items-center justify-content-center h-100">
+                    <span>MENU</span>
+                </div>
+            </nav>
+
+            <div class="flex-grow-1" id="main-content">
+<!-- main content starts here -->
+<!-- Concert Search Bar -->
+<div class="container my-4">
+    <h2 class="main-titles-bio">FIND THE WEEKND CONCERTS IN YOUR AREA</h2>
+    <form id="concert-search-form" class="d-flex mb-3" onsubmit="searchConcerts(); return false;">
+        <input class="form-control me-2" type="search" placeholder="Enter your city or area" aria-label="Search" id="concert-search-input">
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+    <div id="concert-results"></div>
+</div>
+
+<!-- Comment Section -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-12 mx-auto">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-gradient text-white" style="background: linear-gradient(135deg, #2086cf, #0d6efd);">
+                    <h3 class="mb-0">
+                        <i class="fas fa-comments me-2"></i>
+                        Concert Experience Comments
+                    </h3>
+                    <p class="mb-0 mt-2 opacity-75">Share your experience from The Weeknd concerts!</p>
+                </div>
+                <div class="card-body">
+                    <!-- Comment Form -->
+                    <form id="comment-form" class="mb-4">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="commenter-name" class="form-label">Your Name</label>
+                                <input type="text" class="form-control" id="commenter-name" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="concert-venue" class="form-label">Concert Venue</label>
+                                <input type="text" class="form-control" id="concert-venue" placeholder="e.g., Madison Square Garden" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="concert-date" class="form-label">Concert Date</label>
+                            <input type="date" class="form-control" id="concert-date" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="rating" class="form-label">Rating</label>
+                            <div class="rating-stars">
+                                <input type="radio" name="rating" value="5" id="star5" class="rating-input">
+                                <label for="star5" class="rating-star">★</label>
+                                <input type="radio" name="rating" value="4" id="star4" class="rating-input">
+                                <label for="star4" class="rating-star">★</label>
+                                <input type="radio" name="rating" value="3" id="star3" class="rating-input">
+                                <label for="star3" class="rating-star">★</label>
+                                <input type="radio" name="rating" value="2" id="star2" class="rating-input">
+                                <label for="star2" class="rating-star">★</label>
+                                <input type="radio" name="rating" value="1" id="star1" class="rating-input">
+                                <label for="star1" class="rating-star">★</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="comment-text" class="form-label">Your Experience</label>
+                            <textarea class="form-control" id="comment-text" rows="4" placeholder="Share your amazing experience at The Weeknd concert..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane me-2"></i>
+                            Share Experience
+                        </button>
+                    </form>
+
+                    <!-- Comments Display -->
+                    <div id="comments-container">
+                        <h4 class="mb-3">
+                            <i class="fas fa-users me-2"></i>
+                            Recent Experiences
+                        </h4>
+                        <div id="comments-list">
+                            <!-- Comments will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <!-- js links -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+            crossorigin="anonymous"></script>
+        <script src="weeknd.js"></script>
+</body>
+
+</html>
