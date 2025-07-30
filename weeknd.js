@@ -342,17 +342,43 @@ function isDirectlyAboutWeeknd(article) {
 async function fetchNews() {
     try {
         const response = await fetch(NEWS_API_URL);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const data = await response.json();
+        
+        if (data.status === 'error') {
+            throw new Error(data.message || 'API Error');
+        }
+        
         if (data.articles) {
             displayNews(data.articles);
+        } else {
+            throw new Error('No articles found');
         }
     } catch (error) {
         const slider = document.getElementById('news-slider');
         if (slider) {
-            slider.innerHTML = '<div class="text-danger">Failed to load news.</div>';
+            slider.innerHTML = `
+                <div class="swiper-slide">
+                    <div class="card h-100 weeknd-news-card">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-danger">News Loading Error</h5>
+                            <p class="card-text">Unable to load news at this time. This might be due to:</p>
+                            <ul class="text-start">
+                                <li>API key issues or rate limiting</li>
+                                <li>Network connectivity problems</li>
+                                <li>Service temporarily unavailable</li>
+                            </ul>
+                            <button class="btn btn-primary" onclick="fetchNews()">Try Again</button>
+                        </div>
+                    </div>
+                </div>
+            `;
         }
-        // Optionally log the error for debugging
-        console.error(error);
+        console.error('News fetch error:', error);
     }
 }
 
