@@ -385,7 +385,12 @@ const WEEKND_IMAGES = [
     "https://wallpaperaccess.com/full/809771.jpg",
     "https://i.kinja-img.com/gawker-media/image/upload/c_fill,f_auto,fl_progressive,g_center,h_675,pg_1,q_80,w_1200/73e17b7108350cce8423aeb2dc12ff98.png",
     "https://wallpapers.com/images/featured/the-weeknd-after-hours-3cedl88oh962sybq.jpg",
-    "https://4kwallpapers.com/images/wallpapers/the-weeknd-canadian-1920x1080-9582.jpg"
+    "https://4kwallpapers.com/images/wallpapers/the-weeknd-canadian-1920x1080-9582.jpg",
+    "https://wallpaperaccess.com/full/840959.jpg",
+    "https://wallpaperaccess.com/full/837766.jpg",
+    "https://wallpapercave.com/wp/wp6716465.jpg",
+    "https://biographycheck.com/wp-content/uploads/2024/03/image-35-1024x683.png",
+    "https://images.rapgenius.com/dmifo7e009v3by052kyxbixqr.768x512x1.jpg",
     // Add more URLs as you like
 ];
 
